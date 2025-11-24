@@ -10,6 +10,8 @@ Launcher em **Python + PyQt5** para o Lineage 2 Grand Crusade, com:
 
 ---
 
+tete
+
 ## Contribuição e Fluxo de Pull Requests
 
 Este projeto é livre para qualquer usuário baixar, clonar, abrir issues, e criar branches/forks contendo soluções.
