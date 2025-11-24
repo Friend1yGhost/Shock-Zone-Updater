@@ -10,7 +10,7 @@ Launcher em **Python + PyQt5** para o Lineage 2 Grand Crusade, com:
 
 ---
 
-tete
+tete 2
 
 ## Contribuição e Fluxo de Pull Requests
 
