@@ -10,9 +10,25 @@ from app.windows_privileges import ensure_admin_privileges
 LOGGING_ENABLED = True
 
 
-def setup_logging():
-    logs_dir = os.path.join(os.getcwd(), "logs")
+def get_app_dir() -> str:
+    """
+    Retorna a pasta onde está o executável (no .exe) ou o arquivo main.py (em dev).
+
+    - Quando estiver empacotado com PyInstaller (sys.frozen = True),
+      usamos sys.executable.
+    - Em modo desenvolvimento, usamos o próprio __file__.
+    """
+    if getattr(sys, "frozen", False):
+        # caminho do .exe gerado pelo PyInstaller
+        return os.path.dirname(os.path.abspath(sys.executable))
+    # caminho do main.py quando rodando com "python main.py"
+    return os.path.dirname(os.path.abspath(__file__))
+
+
+def setup_logging(app_dir: str) -> None:
+    logs_dir = os.path.join(app_dir, "logs")
     os.makedirs(logs_dir, exist_ok=True)
+
     log_file_path = os.path.join(logs_dir, "launcher.log")
 
     logging.basicConfig(
@@ -25,26 +41,22 @@ def setup_logging():
     )
 
     logging.info("Logging iniciado.")
-
-
-def get_base_path():
-    # compatível com PyInstaller
-    if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
-        return sys._MEIPASS
-    return os.path.dirname(os.path.abspath(__file__))
+    logging.info(f"Diretório da aplicação: {app_dir}")
 
 
 def main():
     # Garante privilégios administrativos no Windows (se possível)
     ensure_admin_privileges()
 
+    app_dir = get_app_dir()
+
     if LOGGING_ENABLED:
-        setup_logging()
+        setup_logging(app_dir)
 
     app = QApplication(sys.argv)
 
-    base_path = get_base_path()
-    config_path = os.path.join(base_path, "config.json")
+    # config.json fica SEMPRE ao lado do .exe / main.py
+    config_path = os.path.join(app_dir, "config.json")
 
     if not os.path.isfile(config_path):
         QMessageBox.critical(

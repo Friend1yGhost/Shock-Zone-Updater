@@ -2,7 +2,7 @@
   "paths": {
     "update_json": "http://192.168.15.57:8080/l2updater/update_json_url.json",
     "fullcheck_json": "http://192.168.15.57:8080/l2updater/fullcheck.json",
-    "game_folder": "C:/Lineage2GC/",
+    "game_folder": ".",
     "exe": "System_en/l2.bin",
     "news_url": "http://192.168.15.57:8080/news/launcher_news.html"
   }
