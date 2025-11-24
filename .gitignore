@@ -1,0 +1,16 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Logs
+logs/
+*.log
+
+# Client do jogo (NÃO subir)
+www/l2updater/client/
+
+# Arquivos temporários de IDE
+.idea/
+.vscode/
+*.iml

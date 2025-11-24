@@ -1,0 +1,12 @@
+## Contribuição e Fluxo de Pull Requests
+
+Este projeto é livre para qualquer usuário baixar, clonar, abrir issues, e criar branches/forks contendo soluções.
+
+**Regras para Pull Requests:**
+- Todos os pull requests (PRs) devem ser enviados para a branch `homologacao`.
+- PRs para a branch `main` não serão aceitos diretamente.
+- Apenas o mantenedor ([@Tkenai](https://github.com/Tkenai)) pode aprovar e fazer merge de PRs para a branch principal (`main`), após homologação.
+- Após validação na `homologacao`, será criado um PR de homologação para `main`.
+
+**Licença**
+Este projeto está licenciado sob os termos da [GNU General Public License v3.0](LICENSE).
